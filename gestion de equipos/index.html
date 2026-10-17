@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sistema de Gestión de Equipos Informáticos</title>
+
+    <!-- Archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <header>
+        <h1>Sistema de Gestión de Equipos Informáticos</h1>
+        <p>Registro y administración de equipos</p>
+    </header>
+
+
+    <main>
+
+        <!-- ========================= -->
+        <!-- FORMULARIO DE EQUIPO -->
+        <!-- ========================= -->
+
+        <section class="formulario">
+
+            <h2>Registrar equipo</h2>
+
+            <form id="formEquipo">
+
+                <!-- Tipo de computadora -->
+                <label for="tipo">Tipo de computadora:</label>
+
+                <select id="tipo" required>
+                    <option value="">Seleccionar tipo</option>
+                    <option value="Notebook">Notebook</option>
+                    <option value="PC de Escritorio">PC de Escritorio</option>
+                    <option value="All-in-One">All-in-One</option>
+                    <option value="Servidor">Servidor</option>
+                </select>
+
+
+                <!-- Nombre del titular -->
+                <label for="titular">Nombre del titular:</label>
+
+                <input
+                    type="text"
+                    id="titular"
+                    placeholder="Ej: Juan Pérez"
+                    required
+                >
+
+
+                <!-- Marca -->
+                <label for="marca">Marca:</label>
+
+                <input
+                    type="text"
+                    id="marca"
+                    placeholder="Ej: Lenovo"
+                    required
+                >
+
+
+                <!-- Modelo -->
+                <label for="modelo">Modelo:</label>
+
+                <input
+                    type="text"
+                    id="modelo"
+                    placeholder="Ej: ThinkPad E14"
+                >
+
+
+                <!-- Procesador -->
+                <label for="procesador">Procesador:</label>
+
+                <input
+                    type="text"
+                    id="procesador"
+                    placeholder="Ej: Intel Core i5"
+                    required
+                >
+
+
+                <!-- Memoria RAM -->
+                <label for="ram">Memoria RAM:</label>
+
+                <input
+                    type="text"
+                    id="ram"
+                    placeholder="Ej: 16GB DDR4"
+                    required
+                >
+
+
+                <!-- Almacenamiento -->
+                <label for="almacenamiento">Almacenamiento:</label>
+
+                <input
+                    type="text"
+                    id="almacenamiento"
+                    placeholder="Ej: 500GB SSD"
+                    required
+                >
+
+
+                <!-- Placa de video -->
+                <label for="placaVideo">Placa de video:</label>
+
+                <input
+                    type="text"
+                    id="placaVideo"
+                    placeholder="Ej: NVIDIA GTX 1660"
+                >
+
+
+                <!-- Pantalla -->
+                <label for="pantalla">Pulgadas de pantalla:</label>
+
+                <input
+                    type="text"
+                    id="pantalla"
+                    placeholder="Ej: 15.6"
+                >
+
+
+                <!-- Estado -->
+                <label for="estado">Estado del equipo:</label>
+
+                <select id="estado" required>
+                    <option value="">Seleccionar estado</option>
+                    <option value="Operativo">Operativo</option>
+                    <option value="En reparación">En reparación</option>
+                    <option value="Descartado">Descartado</option>
+                </select>
+
+
+                <!-- Sugerencias -->
+                <label for="sugerencias">Sugerencias:</label>
+
+                <textarea
+                    id="sugerencias"
+                    placeholder="Escriba cómo llegó el producto o alguna observación..."
+                ></textarea>
+
+
+                <!-- Botón guardar -->
+                <button type="submit" id="btnGuardar">
+                    Guardar equipo
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- CONTADORES -->
+        <!-- ========================= -->
+
+        <section class="contadores">
+
+            <h2>Resumen de equipos</h2>
+
+            <div class="contador">
+                <h3>Total</h3>
+                <span id="contadorTotal">0</span>
+            </div>
+
+            <div class="contador">
+                <h3>Operativos</h3>
+                <span id="contadorOperativos">0</span>
+            </div>
+
+            <div class="contador">
+                <h3>En reparación</h3>
+                <span id="contadorReparacion">0</span>
+            </div>
+
+            <div class="contador">
+                <h3>Descartados</h3>
+                <span id="contadorDescartados">0</span>
+            </div>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- BÚSQUEDA Y FILTRADO -->
+        <!-- ========================= -->
+
+        <section class="busqueda">
+
+            <h2>Buscar y filtrar equipos</h2>
+
+
+            <!-- Buscador -->
+            <label for="buscador">
+                Buscar por titular o marca:
+            </label>
+
+            <input
+                type="text"
+                id="buscador"
+                placeholder="Escriba un nombre o marca..."
+            >
+
+
+            <!-- Filtro -->
+            <label for="filtroEstado">
+                Filtrar por estado:
+            </label>
+
+            <select id="filtroEstado">
+
+                <option value="Todos">
+                    Todos
+                </option>
+
+                <option value="Operativo">
+                    Operativo
+                </option>
+
+                <option value="En reparación">
+                    En reparación
+                </option>
+
+                <option value="Descartado">
+                    Descartado
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- IMPORTAR / EXPORTAR JSON -->
+        <!-- ========================= -->
+
+        <section class="archivos">
+
+            <h2>Gestión de archivos</h2>
+
+
+            <!-- Exportar -->
+            <button id="btnExportar">
+                Exportar equipos a JSON
+            </button>
+
+
+            <!-- Importar -->
+            <label for="inputImportar" class="botonImportar">
+                Importar archivo JSON
+            </label>
+
+            <input
+                type="file"
+                id="inputImportar"
+                accept=".json"
+                hidden
+            >
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- EQUIPOS REGISTRADOS -->
+        <!-- ========================= -->
+
+        <section class="equipos">
+
+            <h2>Equipos registrados</h2>
+
+            <!--
+                JavaScript va a colocar
+                los equipos dentro de este contenedor.
+            -->
+
+            <div id="listaEquipos">
+
+                <p id="mensajeVacio">
+                    No hay equipos registrados.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- PIE DE PÁGINA -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+            Sistema de Gestión de Equipos Informáticos
+        </p>
+
+        <p>
+            Trabajo Práctico Ampliatorio - Web
+        </p>
+
+    </footer>
+
+
+    <!-- Archivo JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
